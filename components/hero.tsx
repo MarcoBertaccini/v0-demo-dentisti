@@ -4,11 +4,13 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import BookingModal from './booking-modal'
+import LearnMoreModal from './learn-more-modal'
 import { fadeInUpVariants } from '@/lib/animations'
 import { analyticsEvents } from '@/lib/analytics-events'
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isLearnMoreOpen, setIsLearnMoreOpen] = useState(false)
 
   return (
     <>
@@ -48,12 +50,12 @@ export default function Hero() {
                 >
                   Prenota Check-up Gratis
                 </button>
-                <a
-                  href="/contact"
+                <button
+                  onClick={() => setIsLearnMoreOpen(true)}
                   className="rounded-lg border border-accent px-8 py-3 font-semibold text-accent hover:bg-accent/10 transition-colors"
                 >
                   Scopri di Più
-                </a>
+                </button>
               </div>
 
               <div className="flex gap-6 pt-4">
@@ -93,6 +95,7 @@ export default function Hero() {
       </section>
 
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <LearnMoreModal isOpen={isLearnMoreOpen} onClose={() => setIsLearnMoreOpen(false)} />
     </>
   )
 }
