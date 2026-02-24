@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from 'next/script'
 import './globals.css'
 
@@ -47,13 +48,12 @@ export const viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="it" className="dark scroll-smooth">
       <head>
-        {/* Google Analytics 4 - Replace GA_ID with your actual GA4 ID */}
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX'}`}
@@ -74,10 +74,13 @@ export default function RootLayout({
           }}
         />
       </head>
+
       <body className="font-sans antialiased">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
+
     </html>
   )
 }
