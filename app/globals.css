@@ -3,7 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* DENTE ALTIUS - DESIGN TOKENS */
+/* Dark theme with teal accent (#0F766E) */
+
 :root {
+  /* Neutrals - Light Theme (not used, placeholder) */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -37,41 +41,60 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Brand Accent */
+  --accent-teal: #0F766E;
+  --accent-teal-light: #1a9b8a;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* Dark Theme Colors */
+  --background: #0f1117;
+  --foreground: #e6edf3;
+  --card: #161b22;
+  --card-foreground: #e6edf3;
+  --popover: #0d1117;
+  --popover-foreground: #e6edf3;
+  
+  /* Teal Accent as Primary */
+  --primary: #0F766E;
+  --primary-foreground: #ffffff;
+  
+  /* Muted & Secondary */
+  --secondary: #30363d;
+  --secondary-foreground: #e6edf3;
+  --muted: #21262d;
+  --muted-foreground: #8b949e;
+  
+  /* Accent (Teal) */
+  --accent: #0F766E;
+  --accent-foreground: #ffffff;
+  
+  /* Destructive */
+  --destructive: #da3633;
+  --destructive-foreground: #ffffff;
+  
+  /* Borders & Input */
+  --border: #30363d;
+  --input: #0d1117;
+  --ring: #1f6feb;
+  
+  /* Charts */
+  --chart-1: #0F766E;
+  --chart-2: #58a6ff;
+  --chart-3: #79c0ff;
+  --chart-4: #56d364;
+  --chart-5: #d29922;
+  
+  /* Sidebar */
+  --sidebar: #161b22;
+  --sidebar-foreground: #e6edf3;
+  --sidebar-primary: #0F766E;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0F766E;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #30363d;
+  --sidebar-ring: #1f6feb;
 }
 
 @theme inline {
@@ -121,5 +144,70 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Glass Morphism Utilities */
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/10;
+  }
+
+  .glass-accent {
+    @apply bg-teal-600/10 backdrop-blur-md border border-teal-400/20;
+  }
+
+  /* Smooth Animations */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .pulse-subtle {
+    animation: pulseSubtle 2s ease-in-out infinite;
+  }
+
+  /* Scroll Animation Trigger */
+  .scroll-animate {
+    @apply transition-all duration-700 ease-out;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
   }
 }
