@@ -5,10 +5,12 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Facebook, Instagram, Linkedin } from 'lucide-react'
 import BookingModal from './booking-modal'
+import LearnMoreModal from './learn-more-modal'
 import { analyticsEvents } from '@/lib/analytics-events'
 
 export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isLearnMoreOpen, setIsLearnMoreOpen] = useState(false)
   const currentYear = new Date().getFullYear()
 
   const footerSections = [
@@ -72,15 +74,23 @@ export default function Footer() {
           <p className="text-muted-foreground mb-6 max-w-md">
             Prenota oggi il tuo check-up gratuito e scopri come possiamo aiutarti a raggiungere il sorriso dei tuoi sogni.
           </p>
-          <button
-            onClick={() => {
-              analyticsEvents.bookingCTAClickedFrom('footer')
-              setIsModalOpen(true)
-            }}
-            className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl"
-          >
-            Prenota Ora
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={() => {
+                analyticsEvents.bookingCTAClickedFrom('footer')
+                setIsModalOpen(true)
+              }}
+              className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl"
+            >
+              Prenota Ora
+            </button>
+            <button
+              onClick={() => setIsLearnMoreOpen(true)}
+              className="rounded-lg border border-accent px-8 py-3 font-semibold text-accent hover:bg-accent/10 transition-colors"
+            >
+              Scopri di Più
+            </button>
+          </div>
         </motion.div>
 
         <div className="mb-8 h-px bg-border/50" />
@@ -179,6 +189,7 @@ export default function Footer() {
       </div>
 
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <LearnMoreModal isOpen={isLearnMoreOpen} onClose={() => setIsLearnMoreOpen(false)} />
     </footer>
   )
 }
