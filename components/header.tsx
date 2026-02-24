@@ -10,6 +10,19 @@ export default function Header() {
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
+  const handleNavClick = (href: string) => {
+    // If hash link, scroll to section on landing page
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        // If section not found on current page, go to home first
+        window.location.href = '/' + href
+      }
+    }
+  }
+
   const navLinks = [
     { label: 'Chi Siamo', href: '#about' },
     { label: 'Servizi', href: '#features' },
@@ -44,13 +57,19 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+                onClick={() => {
+                  if (link.href.startsWith('#')) {
+                    handleNavClick(link.href)
+                  } else {
+                    window.location.href = link.href
+                  }
+                }}
+                className="text-sm font-medium text-foreground hover:text-accent transition-colors cursor-pointer"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 
@@ -85,14 +104,20 @@ export default function Header() {
           >
             <nav className="flex flex-col gap-2 px-4 py-4">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-accent/20 hover:text-accent transition-colors"
+                  onClick={() => {
+                    setIsOpen(false)
+                    if (link.href.startsWith('#')) {
+                      handleNavClick(link.href)
+                    } else {
+                      window.location.href = link.href
+                    }
+                  }}
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-accent/20 hover:text-accent transition-colors text-left cursor-pointer"
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
               <a
                 href="tel:+393331234567"

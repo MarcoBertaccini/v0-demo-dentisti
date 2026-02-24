@@ -59,6 +59,32 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-border/50 bg-card/50 px-4 py-12 md:px-8 md:py-16">
       <div className="mx-auto max-w-7xl">
+        {/* CTA Section - Top of Footer */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 rounded-lg glass-dark p-8 md:p-12 flex flex-col items-center justify-center text-center"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+            Pronto per il tuo check-up?
+          </h3>
+          <p className="text-muted-foreground mb-6 max-w-md">
+            Prenota oggi il tuo check-up gratuito e scopri come possiamo aiutarti a raggiungere il sorriso dei tuoi sogni.
+          </p>
+          <button
+            onClick={() => {
+              analyticsEvents.bookingCTAClickedFrom('footer')
+              setIsModalOpen(true)
+            }}
+            className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl"
+          >
+            Prenota Ora
+          </button>
+        </motion.div>
+
+        <div className="mb-8 h-px bg-border/50" />
+
         {/* Main Footer Content */}
         <div className="grid gap-8 mb-12 md:grid-cols-4">
           {/* Brand */}
@@ -134,32 +160,7 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 rounded-lg glass-dark p-8 md:p-12 flex flex-col items-center justify-center text-center"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
-            Pronto per il tuo check-up?
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-md">
-            Prenota oggi il tuo check-up gratuito e scopri come possiamo aiutarti a raggiungere il sorriso dei tuoi sogni.
-          </p>
-          <button
-            onClick={() => {
-              analyticsEvents.bookingCTAClickedFrom('footer')
-              setIsModalOpen(true)
-            }}
-            className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl"
-          >
-            Prenota Ora
-          </button>
-        </motion.div>
 
-        {/* Divider */}
-        <div className="mb-8 h-px bg-border/50" />
 
         {/* Bottom Footer */}
         <motion.div
