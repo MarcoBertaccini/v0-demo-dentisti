@@ -1,10 +1,14 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Facebook, Instagram, Linkedin } from 'lucide-react'
+import BookingModal from './booking-modal'
+import { analyticsEvents } from '@/lib/analytics-events'
 
 export default function Footer() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const currentYear = new Date().getFullYear()
 
   const footerSections = [
@@ -130,6 +134,30 @@ export default function Footer() {
           </motion.div>
         </div>
 
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 rounded-lg glass-dark p-8 md:p-12 flex flex-col items-center justify-center text-center"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+            Pronto per il tuo check-up?
+          </h3>
+          <p className="text-muted-foreground mb-6 max-w-md">
+            Prenota oggi il tuo check-up gratuito e scopri come possiamo aiutarti a raggiungere il sorriso dei tuoi sogni.
+          </p>
+          <button
+            onClick={() => {
+              analyticsEvents.bookingCTAClickedFrom('footer')
+              setIsModalOpen(true)
+            }}
+            className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl"
+          >
+            Prenota Ora
+          </button>
+        </motion.div>
+
         {/* Divider */}
         <div className="mb-8 h-px bg-border/50" />
 
@@ -148,6 +176,8 @@ export default function Footer() {
           </p>
         </motion.div>
       </div>
+
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </footer>
   )
 }
