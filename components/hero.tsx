@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import BookingModal from './booking-modal'
 import LearnMoreModal from './learn-more-modal'
+import BeforeAfterSlider from './before-after-slider'
+import AnimatedCounter from './animated-counter'
 import { fadeInUpVariants } from '@/lib/animations'
 import { analyticsEvents } from '@/lib/analytics-events'
 
@@ -58,36 +60,32 @@ export default function Hero() {
                 </button>
               </div>
 
-              <div className="flex gap-6 pt-4">
-                <div>
-                  <p className="text-2xl font-bold text-accent">4.9★</p>
-                  <p className="text-sm text-muted-foreground">su 250+ Recensioni</p>
+              <div className="flex gap-8 pt-8 flex-wrap">
+                <div className="flex-1 min-w-32">
+                  <AnimatedCounter value={49} suffix="★" label="su 250+ Recensioni" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-accent">10+</p>
-                  <p className="text-sm text-muted-foreground">Anni di Esperienza</p>
+                <div className="flex-1 min-w-32">
+                  <AnimatedCounter value={20} suffix="+" label="Anni di Esperienza" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-accent">1000+</p>
-                  <p className="text-sm text-muted-foreground">Pazienti Felici</p>
+                <div className="flex-1 min-w-32">
+                  <AnimatedCounter value={5000} suffix="+" label="Pazienti Felici" />
                 </div>
               </div>
             </motion.div>
 
-            {/* Hero Image */}
+            {/* Before/After Slider */}
             <motion.div
               initial="hidden"
               animate="visible"
               custom={1}
               variants={fadeInUpVariants}
-              className="relative h-96 md:h-[500px] w-full rounded-2xl overflow-hidden glass"
             >
-              <Image
-                src="/hero-dental.jpg"
-                alt="Studio dentale moderno con tecnologie avanzate"
-                fill
-                className="object-cover"
-                priority
+              <BeforeAfterSlider
+                beforeImage="/hero-dental.jpg"
+                afterImage="/testimonial-before-after-1.jpg"
+                beforeLabel="Prima"
+                afterLabel="Dopo"
+                alt="Trasformazione sorriso"
               />
             </motion.div>
           </div>

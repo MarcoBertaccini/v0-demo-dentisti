@@ -80,7 +80,7 @@ export default function Features() {
                 </p>
 
                 {/* Feature Image */}
-                <div className="relative mb-4 h-48 w-full overflow-hidden rounded-lg">
+                <div className="relative h-48 w-full overflow-hidden rounded-lg">
                   <Image
                     src={feature.image}
                     alt={feature.title}
@@ -88,12 +88,6 @@ export default function Features() {
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-
-                {/* Learn More Link */}
-                <a href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all">
-                  Scopri di Più
-                  <span>→</span>
-                </a>
               </motion.div>
             )
           })}
