@@ -16,45 +16,56 @@ export default function Hero() {
 
   return (
     <>
-      <section id="hero" className="relative min-h-screen w-full overflow-hidden bg-background pt-24 md:pt-32">
+      <section id="hero" className="relative min-h-[90vh] w-full overflow-hidden bg-background pt-24 md:pt-32 hero-gradient">
+        {/* Decorative Grid Overlay */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10" />
+
+        {/* Section Dividers / Edge Gradients */}
+        <div className="absolute top-0 left-0 w-full h-px teal-edge-gradient" />
+
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] animate-pulse-subtle" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8 py-12 md:py-24">
-          <div className="grid gap-12 md:grid-cols-2 md:gap-8 items-center">
+        <div className="relative mx-auto max-w-7xl px-6 md:px-8 py-12 md:py-24">
+          <div className="grid gap-16 md:grid-cols-2 md:gap-12 items-center">
             {/* Text Content */}
             <motion.div
               initial="hidden"
               animate="visible"
               custom={0}
               variants={fadeInUpVariants}
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-8"
             >
-              <div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance mb-4">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-balance">
                   Il Tuo Sorriso{' '}
-                  <span className="text-accent">Perfetto</span> Vi Aspetta
+                  <span className="text-accent bg-clip-text text-transparent bg-gradient-to-r from-accent to-teal-400">Perfetto</span> Vi Aspetta
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground text-balance">
+                <p className="text-lg md:text-xl text-muted-foreground text-balance max-w-lg leading-relaxed">
                   Scopri tecnologie d'avanguardia e cure dentali di eccellenza presso Dente Altius. Check-up iniziale completamente gratuito.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-5">
                 <button
                   onClick={() => {
                     analyticsEvents.bookingCTAClickedFrom('hero')
                     setIsModalOpen(true)
                   }}
-                  className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl"
+                  className="group relative rounded-xl bg-accent px-10 py-4 font-bold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 glow-teal shadow-[0_0_20px_rgba(15,118,110,0.3)] hover:shadow-[0_0_30px_rgba(15,118,110,0.5)]"
                 >
-                  Prenota Check-up Gratis
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Prenota Check-up Gratis
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
                 </button>
                 <button
                   onClick={() => setIsLearnMoreOpen(true)}
-                  className="rounded-lg border border-accent px-8 py-3 font-semibold text-accent hover:bg-accent/10 transition-colors"
+                  className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-10 py-4 font-bold text-white hover:bg-white/10 transition-all border-accent/20"
                 >
                   Scopri di Più
                 </button>
@@ -81,7 +92,7 @@ export default function Hero() {
               variants={fadeInUpVariants}
             >
               <BeforeAfterSlider
-                beforeImage="/hero-dental.jpg"
+                beforeImage="/hero-dental.png"
                 afterImage="/testimonial-before-after-1.jpg"
                 beforeLabel="Prima"
                 afterLabel="Dopo"

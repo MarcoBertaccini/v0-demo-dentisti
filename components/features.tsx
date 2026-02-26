@@ -10,19 +10,19 @@ const features = [
     icon: Zap,
     title: 'Implantologia Avanzata',
     description: 'Tecnologie 3D e implanti all-on-4 per risultati duraturi e naturali.',
-    image: '/feature-implantology.jpg',
+    image: '/feature-implantology.png',
   },
   {
     icon: Award,
     title: 'Ortodonzia Moderna',
     description: 'Allineamento invisibile con tecnologie discrete e efficaci.',
-    image: '/feature-orthodontics.jpg',
+    image: '/feature-orthodontics.png',
   },
   {
     icon: Heart,
     title: 'Cosmesi Dentale',
     description: 'Sbiancamento professionale e faccette in ceramica per il sorriso perfetto.',
-    image: '/feature-cosmetic.jpg',
+    image: '/feature-cosmetic.png', // keeping this as jpg for now or using a placeholder
   },
 ]
 
@@ -50,13 +50,22 @@ export default function Features() {
   }
 
   return (
-    <section id="features" ref={ref} className="relative w-full px-4 py-20 md:px-8 md:py-32 bg-card/50">
-      <div className="mx-auto max-w-7xl">
+    <section id="features" ref={ref} className="relative w-full px-6 py-24 md:px-8 md:py-32 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="mx-auto max-w-7xl relative z-10">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">I Nostri <span className="text-accent">Servizi</span></h2>
+          <div className="w-24 h-1 bg-accent mx-auto rounded-full opacity-50" />
+          <p className="text-muted-foreground max-w-2xl mx-auto">Offriamo soluzioni personalizzate per ogni esigenza dentale, utilizzando le tecnologie più avanzate del settore.</p>
+        </div>
+
         <motion.div
           initial="hidden"
           animate={isVisible ? 'visible' : 'hidden'}
           variants={containerVariants}
-          className="grid gap-12 md:grid-cols-3"
+          className="grid gap-8 md:grid-cols-3"
         >
           {features.map((feature, index) => {
             const Icon = feature.icon
@@ -64,29 +73,33 @@ export default function Features() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group rounded-2xl border border-border/50 glass p-6 hover:border-accent/50 transition-all hover:shadow-xl"
+                className="group relative rounded-2xl border border-white/5 glass-morphism p-8 hover-lift hover:border-accent/30 transition-all hover:glow-teal"
               >
+                {/* Decorative Accent Line */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-accent group-hover:w-1/2 transition-all duration-500" />
+
                 {/* Icon */}
-                <div className="mb-6 inline-flex rounded-lg bg-accent/10 p-3 group-hover:bg-accent/20 transition-colors">
-                  <Icon className="h-6 w-6 text-accent" />
+                <div className="mb-8 inline-flex rounded-xl bg-accent/10 p-4 group-hover:bg-accent/20 transition-all group-hover:scale-110 shadow-inner">
+                  <Icon className="h-8 w-8 text-accent" />
                 </div>
 
                 {/* Title */}
-                <h3 className="mb-3 text-xl font-bold">{feature.title}</h3>
+                <h3 className="mb-4 text-2xl font-bold tracking-tight group-hover:text-accent transition-colors">{feature.title}</h3>
 
                 {/* Description */}
-                <p className="mb-6 text-sm text-muted-foreground leading-relaxed">
+                <p className="mb-8 text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
 
                 {/* Feature Image */}
-                <div className="relative h-48 w-full overflow-hidden rounded-lg">
+                <div className="relative h-56 w-full overflow-hidden rounded-xl border border-white/5">
                   <Image
                     src={feature.image}
                     alt={feature.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover group-hover:scale-110 blur-sm group-hover:blur-0 transition-all duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60 group-hover:opacity-20 transition-opacity" />
                 </div>
               </motion.div>
             )

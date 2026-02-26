@@ -76,19 +76,22 @@ export default function Pricing() {
 
   return (
     <>
-      <section id="pricing" ref={ref} className="relative w-full px-4 py-20 md:px-8 md:py-32 bg-card/50">
-        <div className="mx-auto max-w-7xl">
+      <section id="pricing" ref={ref} className="relative w-full px-6 py-24 md:px-8 md:py-32 overflow-hidden bg-background">
+        {/* Decorative backgrounds */}
+        <div className="absolute top-0 left-0 w-full h-px teal-edge-gradient" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="mx-auto max-w-7xl relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-16 text-center space-y-4"
           >
-            <h2 className="mb-4 text-4xl md:text-5xl font-bold">
-              Piani Trasparenti e Convenzioni
-            </h2>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Piani <span className="text-accent">Trasparenti</span></h2>
+            <div className="w-24 h-1 bg-accent mx-auto rounded-full opacity-50" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Tutti i nostri prezzi includono materiali premium e garanzie estese
+              Tutti i nostri prezzi includono materiali premium e garanzie estese. Scegli il percorso più adatto alle tue esigenze.
             </p>
           </motion.div>
 
@@ -96,47 +99,49 @@ export default function Pricing() {
             initial="hidden"
             animate={isVisible ? 'visible' : 'hidden'}
             variants={containerVariants}
-            className="grid gap-8 md:grid-cols-3"
+            className="grid gap-8 md:grid-cols-3 items-stretch"
           >
             {pricingPlans.map((plan, index) => (
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className={`rounded-2xl p-8 border transition-all ${
-                  plan.popular
-                    ? 'border-accent bg-accent/5 ring-2 ring-accent/20 shadow-xl scale-105 md:scale-100'
-                    : 'border-border/50 glass'
-                }`}
+                className={`group relative rounded-3xl p-10 border transition-all duration-500 hover-lift flex flex-col ${plan.popular
+                    ? 'border-accent bg-accent/5 glow-teal-strong shadow-2xl scale-105 z-10'
+                    : 'border-white/5 glass-morphism hover:border-accent/30'
+                  }`}
               >
                 {plan.popular && (
-                  <div className="mb-4 inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
-                    Più Popolare
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white shadow-lg glow-teal">
+                    Consigliato
                   </div>
                 )}
 
-                <h3 className="mb-2 text-xl font-bold">{plan.name}</h3>
-                <p className="mb-4 text-sm text-muted-foreground">{plan.description}</p>
+                <div className="mb-8">
+                  <h3 className="mb-2 text-2xl font-bold tracking-tight">{plan.name}</h3>
+                  <p className="text-sm text-muted-foreground font-medium">{plan.description}</p>
+                </div>
 
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">{plan.price}</span>
+                <div className="mb-10 flex items-baseline gap-1">
+                  <span className="text-5xl font-extrabold tracking-tighter text-foreground">{plan.price}</span>
                 </div>
 
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className={`w-full mb-6 rounded-lg px-4 py-3 font-semibold transition-colors ${
-                    plan.popular
-                      ? 'bg-accent text-accent-foreground hover:bg-accent/90'
-                      : 'border border-accent text-accent hover:bg-accent/10'
-                  }`}
+                  className={`w-full mb-10 rounded-xl px-6 py-4 font-bold transition-all duration-300 hover:scale-[1.02] shadow-sm ${plan.popular
+                      ? 'bg-accent text-white hover:glow-teal'
+                      : 'border border-accent/30 text-accent hover:bg-accent/10'
+                    }`}
                 >
                   {plan.cta}
                 </button>
 
-                <div className="space-y-3">
+                <div className="space-y-4 flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
+                      <div className="mt-1 rounded-full bg-accent/20 p-1">
+                        <Check className="h-3 w-3 text-accent" />
+                      </div>
+                      <span className="text-sm text-foreground/80 font-medium">{feature}</span>
                     </div>
                   ))}
                 </div>

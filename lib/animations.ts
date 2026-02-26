@@ -71,3 +71,28 @@ export const slideInFromRight = {
     transition: { duration: 0.6, ease: 'easeOut' },
   },
 }
+
+export const blurReveal = {
+  hidden: { opacity: 0, filter: 'blur(10px)', y: 20 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    filter: 'blur(0px)',
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+}
+
+export const textReveal = {
+  hidden: { y: '100%' },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+}
