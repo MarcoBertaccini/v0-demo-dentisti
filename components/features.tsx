@@ -56,8 +56,17 @@ export default function Features() {
 
       <div className="mx-auto max-w-7xl relative z-10">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">I Nostri <span className="text-accent">Servizi</span></h2>
-          <div className="w-24 h-1 bg-accent mx-auto rounded-full opacity-50" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-16 text-center"
+          >
+            <h2 className={`mb-4 text-3xl font-bold md:text-5xl ${isVisible ? 'blur-reveal' : ''}`}>
+              Un Sorriso <span className="text-accent">Senza Compromessi</span>
+            </h2>
+            <div className="mx-auto h-1.5 w-24 rounded-full bg-accent opacity-50" />
+          </motion.div>
           <p className="text-muted-foreground max-w-2xl mx-auto">Offriamo soluzioni personalizzate per ogni esigenza dentale, utilizzando le tecnologie più avanzate del settore.</p>
         </div>
 

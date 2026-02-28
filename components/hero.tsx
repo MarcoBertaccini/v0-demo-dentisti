@@ -43,35 +43,64 @@ export default function Hero() {
                   Il Tuo Sorriso{' '}
                   <span className="text-accent bg-clip-text text-transparent bg-gradient-to-r from-accent to-teal-400">Perfetto</span> Vi Aspetta
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground text-balance max-w-lg leading-relaxed">
-                  Scopri tecnologie d'avanguardia e cure dentali di eccellenza presso Dente Altius. Check-up iniziale completamente gratuito.
-                </p>
+                <div className="h-20 md:h-24">
+                  <p className="text-lg md:text-xl text-muted-foreground text-balance max-w-lg leading-relaxed">
+                    Rispondiamo alle tue esigenze di{' '}
+                    <span className="inline-flex flex-col h-[1.2em] overflow-hidden">
+                      <motion.span
+                        animate={{ y: [0, -40, -80, -120, 0] }}
+                        transition={{ duration: 8, repeat: Infinity, times: [0, 0.25, 0.5, 0.75, 1] }}
+                        className="flex flex-col"
+                      >
+                        <span className="text-foreground font-semibold">Estetica</span>
+                        <span className="text-foreground font-semibold">Tempo</span>
+                        <span className="text-foreground font-semibold">Paura</span>
+                        <span className="text-foreground font-semibold">Comfort</span>
+                        <span className="text-foreground font-semibold">Estetica</span>
+                      </motion.span>
+                    </span>
+                    {' '}con tecnologie d'avanguardia e cure dentali di eccellenza.
+                  </p>
+                </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-5">
-                <button
-                  onClick={() => {
-                    analyticsEvents.bookingCTAClickedFrom('hero')
-                    setIsModalOpen(true)
-                  }}
-                  className="group relative rounded-xl bg-accent px-10 py-4 font-bold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 glow-teal shadow-[0_0_20px_rgba(15,118,110,0.3)] hover:shadow-[0_0_30px_rgba(15,118,110,0.5)]"
-                >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    Prenota Check-up Gratis
-                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                </button>
+              <div className="flex flex-col sm:flex-row gap-5 items-center">
+                <div className="w-full sm:w-auto relative group">
+                  <button
+                    onClick={() => {
+                      analyticsEvents.bookingCTAClickedFrom('hero')
+                      setIsModalOpen(true)
+                    }}
+                    className="w-full sm:w-auto relative z-10 rounded-xl bg-accent px-10 py-4 font-bold text-white transition-all duration-300 hover:scale-[1.02] active:scale-95 glow-teal shadow-[0_0_20px_rgba(15,118,110,0.3)] hover:shadow-[0_0_30px_rgba(15,118,110,0.5)]"
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      Prenota Check-up Gratis
+                      <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </button>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 }}
+                    className="absolute -bottom-10 left-0 w-full text-center sm:text-left"
+                  >
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-accent/80 flex items-center justify-center sm:justify-start gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      Disponibili solo 3 appuntamenti questa settimana
+                    </span>
+                  </motion.div>
+                </div>
                 <button
                   onClick={() => setIsLearnMoreOpen(true)}
-                  className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-10 py-4 font-bold text-white hover:bg-white/10 transition-all border-accent/20"
+                  className="w-full sm:w-auto rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-10 py-4 font-bold text-white hover:bg-white/10 transition-all border-accent/20"
                 >
                   Scopri di Più
                 </button>
               </div>
 
-              <div className="flex gap-8 pt-8 flex-wrap">
+              <div className="flex gap-8 pt-12 flex-wrap">
                 <div className="flex-1 min-w-32">
                   <AnimatedCounter value={49} suffix="★" label="su 250+ Recensioni" />
                 </div>
