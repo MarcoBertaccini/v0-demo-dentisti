@@ -213,7 +213,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                               value={formData.name}
                               onChange={handleChange}
                               required
-                              className="w-full rounded-xl border border-border bg-background/50 px-4 py-3 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"
+                              className="w-full rounded-xl border border-border/50 bg-background/50 px-4 py-3 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition-all focus:bg-background"
                             />
                             <input
                               type="tel"
@@ -222,7 +222,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                               value={formData.phone}
                               onChange={handleChange}
                               required
-                              className="w-full rounded-xl border border-border bg-background/50 px-4 py-3 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"
+                              className="w-full rounded-xl border border-border/50 bg-background/50 px-4 py-3 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition-all focus:bg-background"
                             />
                           </div>
                           <input
@@ -232,14 +232,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="w-full rounded-xl border border-border bg-background/50 px-4 py-3 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"
+                            className="w-full rounded-xl border border-border/50 bg-background/50 px-4 py-3 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition-all focus:bg-background"
                           />
                           <textarea
                             name="message"
                             placeholder="Note extra (opzionale)"
                             value={formData.message}
                             onChange={handleChange}
-                            className="w-full rounded-xl border border-border bg-background/50 px-4 py-3 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all h-24 resize-none"
+                            className="w-full rounded-xl border border-border/50 bg-background/50 px-4 py-3 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition-all focus:bg-background h-24 resize-none"
                           />
                           <button
                             type="submit"

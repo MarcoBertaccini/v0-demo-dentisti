@@ -55,7 +55,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
+            className="w-full rounded-lg border border-border/50 bg-background/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all focus:bg-background"
             placeholder="Mario Rossi"
           />
         </div>
@@ -71,7 +71,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
+            className="w-full rounded-lg border border-border/50 bg-background/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all focus:bg-background"
             placeholder="mario@example.com"
           />
         </div>
@@ -88,7 +88,7 @@ export default function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
+            className="w-full rounded-lg border border-border/50 bg-background/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all focus:bg-background"
             placeholder="+39 333 1234567"
           />
         </div>
@@ -103,7 +103,7 @@ export default function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
+            className="w-full rounded-lg border border-border/50 bg-background/50 px-4 py-3 text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all focus:bg-background"
           >
             <option value="">Seleziona un argomento...</option>
             <option value="implantologia">Implantologia</option>
@@ -126,7 +126,7 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           rows={5}
-          className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all resize-none"
+          className="w-full rounded-lg border border-border/50 bg-background/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all focus:bg-background resize-none"
           placeholder="Condividi con noi i tuoi dubbi o le tue domande..."
         />
       </div>
@@ -135,7 +135,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground hover:bg-accent/90 disabled:opacity-50 transition-colors"
+          className="w-full rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 disabled:opacity-50 transition-all duration-300"
         >
           {isSubmitting ? 'Invio in corso...' : 'Invia Messaggio'}
         </button>

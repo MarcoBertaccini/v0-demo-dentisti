@@ -112,7 +112,7 @@ export default function BeforeAfterSlider({
         animate={{ x: 0 }}
       >
         {/* Handle Icon */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent rounded-full p-3 shadow-lg group-hover:scale-110 transition-transform">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent rounded-full p-3 shadow-lg glow-teal group-hover:scale-110 transition-transform">
           <div className="flex gap-1">
             <svg
               className="w-4 h-4 text-accent-foreground"

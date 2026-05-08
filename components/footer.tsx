@@ -80,13 +80,13 @@ export default function Footer() {
                 analyticsEvents.bookingCTAClickedFrom('footer')
                 setIsModalOpen(true)
               }}
-              className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl"
+              className="rounded-lg bg-accent px-8 py-3 font-semibold text-accent-foreground shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300"
             >
               Prenota Ora
             </button>
             <button
               onClick={() => setIsLearnMoreOpen(true)}
-              className="rounded-lg border border-accent px-8 py-3 font-semibold text-accent hover:bg-accent/10 transition-colors"
+              className="rounded-lg border border-accent px-8 py-3 font-semibold text-accent hover:bg-accent/10 hover:-translate-y-0.5 transition-all duration-300"
             >
               Scopri di Più
             </button>
@@ -158,7 +158,7 @@ export default function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                        className="text-sm text-muted-foreground hover:text-accent hover:pl-1 transition-all duration-300 inline-block"
                       >
                         {link.label}
                       </a>

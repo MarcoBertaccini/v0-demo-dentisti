@@ -83,7 +83,7 @@ export default function Trust() {
                   initial="hidden"
                   animate={isVisible ? 'visible' : 'hidden'}
                   transition={{ delay: index * 0.1 }}
-                  className="rounded-xl border border-border/50 glass p-4 hover:border-accent/50 transition-colors"
+                  className="rounded-xl border border-border/50 glass p-4 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-1 transition-all duration-300"
                 >
                   <p className="text-2xl font-bold text-accent mb-1">{stat.value}</p>
                   <p className="text-sm font-semibold text-foreground mb-1">{stat.label}</p>

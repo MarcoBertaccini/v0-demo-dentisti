@@ -66,9 +66,10 @@ export default function Header() {
                     window.location.href = link.href
                   }
                 }}
-                className="text-sm font-medium text-foreground hover:text-accent transition-colors cursor-pointer"
+                className="relative text-sm font-medium text-foreground hover:text-accent transition-colors cursor-pointer group py-2"
               >
                 {link.label}
+                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-accent scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
               </button>
             ))}
           </nav>
@@ -77,7 +78,7 @@ export default function Header() {
           <div className="hidden items-center gap-4 md:flex">
             <a
               href="tel:+393331234567"
-              className="flex items-center gap-2 rounded-lg bg-accent px-4 py-2 font-medium text-accent-foreground hover:bg-accent/90 transition-colors"
+              className="flex items-center gap-2 rounded-lg bg-accent px-4 py-2 font-medium text-accent-foreground shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300"
             >
               <Phone className="h-4 w-4" />
               <span className="text-sm">Chiama</span>
@@ -114,7 +115,7 @@ export default function Header() {
                       window.location.href = link.href
                     }
                   }}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-accent/20 hover:text-accent transition-colors text-left cursor-pointer"
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-accent/10 hover:text-accent transition-all text-left cursor-pointer hover:pl-5"
                 >
                   {link.label}
                 </button>
