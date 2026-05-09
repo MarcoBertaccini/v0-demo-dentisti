@@ -17,6 +17,19 @@ export default function Hero() {
   return (
     <>
       <section id="hero" className="relative min-h-[90vh] w-full overflow-hidden bg-background pt-24 md:pt-32 hero-gradient">
+        {/* Cinematic Video Background */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden mix-blend-screen opacity-30 pointer-events-none">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-full object-cover"
+            src="/hero-video.mp4" 
+          />
+        </div>
+        <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] pointer-events-none" />
+
         {/* Decorative Grid Overlay */}
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10" />
 

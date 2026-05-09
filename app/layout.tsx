@@ -1,24 +1,44 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Playfair_Display, Great_Vibes } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from 'next/script'
+import Preloader from '@/components/preloader'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const _geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const _geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const _playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
+const _signature = Great_Vibes({ weight: "400", subsets: ["latin"], variable: "--font-signature" });
 
 export const metadata: Metadata = {
   title: 'Dente Altius | Studio Dentale Moderno a Milano',
   description: 'Studio dentale moderno con le tecnologie più avanzate. Implantologia, ortodonzia e cosmesi. Prenota il tuo check-up gratuito oggi.',
   keywords: 'dentista Milano, implantologia, ortodonzia, studio dentale, sorriso perfetto',
   generator: 'v0.app',
+  alternates: {
+    canonical: 'https://dentealtius.it',
+  },
   openGraph: {
     title: 'Dente Altius | Studio Dentale Moderno',
     description: 'Scopri il vostro sorriso perfetto con Dente Altius',
     url: 'https://dentealtius.it',
     siteName: 'Dente Altius',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Dente Altius Studio Dentale',
+      },
+    ],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Dente Altius | Studio Dentale Moderno',
+    description: 'Scopri il vostro sorriso perfetto con Dente Altius',
+    images: ['/og-image.jpg'],
   },
   icons: {
     icon: [
@@ -52,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="it" className="dark scroll-smooth">
+    <html lang="it" className={`dark scroll-smooth ${_geist.variable} ${_geistMono.variable} ${_playfair.variable} ${_signature.variable}`}>
       <head>
         <Script
           strategy="afterInteractive"
@@ -73,9 +93,51 @@ export default function RootLayout({
             `,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Dentist',
+              name: 'Dente Altius',
+              image: 'https://dentealtius.it/og-image.jpg',
+              '@id': 'https://dentealtius.it',
+              url: 'https://dentealtius.it',
+              telephone: '+393331234567',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'Via Milano, 42',
+                addressLocality: 'Milano',
+                postalCode: '20100',
+                addressCountry: 'IT'
+              },
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: 45.4642,
+                longitude: 9.1900
+              },
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                  opens: '08:00',
+                  closes: '20:00'
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Saturday',
+                  opens: '09:00',
+                  closes: '17:00'
+                }
+              ],
+              priceRange: '€€'
+            })
+          }}
+        />
       </head>
 
       <body className="font-sans antialiased">
+        <Preloader />
         {children}
         <Analytics />
         <SpeedInsights />

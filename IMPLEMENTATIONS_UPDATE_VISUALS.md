@@ -48,6 +48,25 @@ This document outlines the planned visual enhancements for the **Dente Altius** 
 
 ---
 
+## 💎 Ultra-Professional Dental Polish (To Be Implemented)
+To transition from a "modern tech/SaaS" look to an "ultra-premium medical" feel, the following specific dental industry standards should be added:
+
+### 8. Premium Medical Typography
+- [x] **Dual-Font System**: Introduce an elegant Serif font (e.g., `Playfair Display` or `Cormorant Garamond`) exclusively for main headings (`h1`, `h2`) to evoke luxury and trustworthiness, keeping `Geist` or `Inter` for highly legible body text.
+
+### 9. High-End Media Integration
+- [x] **Cinematic Video Background**: Replace or enhance the Hero gradient with a subtle, slow-motion, high-quality video background loop (e.g., a confident smile, sterile modern equipment, or a pristine clinic environment) masked behind a dark glass overlay.
+- [x] **Parallax Image Scrolling**: Add parallax effects to full-width images (like the clinic team or trust section) to give a cinematic, high-budget feel when scrolling.
+
+### 10. Ultimate Trust & Authenticity Markers
+- [x] **Founder's Signature**: In the `FoundersNote` component, add a stylized, handwritten signature font at the bottom to increase the personal, bespoke feel of the clinic.
+- [x] **Monochrome Premium Logos**: Ensure all logos in the `LogoCloud` (certifications, brands like Invisalign, Straumann) are styled in a crisp, monochrome white/teal to maintain aesthetic purity.
+
+### 11. Initial Experience
+- [x] **Custom Cinematic Preloader**: Add a brief, elegant loading screen (e.g., an animated SVG of a tooth or the Dente Altius logo glowing) to ensure zero Flash of Unstyled Content and set a luxury tone from the first millisecond.
+
+---
+
 ## 🏆 Top 3 Recommendations (High Impact, Low Effort)
 
 1.  **Gradient accents & strategic glow effects**

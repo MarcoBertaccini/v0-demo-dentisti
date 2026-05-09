@@ -114,7 +114,7 @@ export default function Testimonials() {
                       <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-accent/20">
                         <Image
                           src={testimonial.image}
-                          alt={testimonial.name}
+                          alt={`Foto paziente ${testimonial.name} - Risultato trattamento dentale Dente Altius`}
                           fill
                           className="object-cover rounded-full"
                         />

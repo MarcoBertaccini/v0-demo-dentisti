@@ -54,12 +54,11 @@ export default function FoundersNote() {
                         </div>
 
                         <div className="mt-10 flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-full border border-accent/20 flex items-center justify-center">
-                                <span className="font-serif italic text-accent text-2xl">M</span>
-                            </div>
-                            <div>
-                                <p className="font-bold text-foreground">Marco Altius</p>
-                                <p className="text-sm text-muted-foreground">Fondatore & Chirurgo Senior</p>
+                            <div className="flex flex-col">
+                                <p className="font-signature text-5xl md:text-6xl text-accent -rotate-2 transform-gpu origin-left drop-shadow-sm">
+                                    Marco Altius
+                                </p>
+                                <p className="text-sm text-muted-foreground mt-2 font-medium tracking-wide">Fondatore & Chirurgo Senior</p>
                             </div>
                         </div>
                     </motion.div>

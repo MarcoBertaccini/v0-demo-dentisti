@@ -1,12 +1,21 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { Award, Users, Zap } from 'lucide-react'
 
 export default function Trust() {
+  const containerRef = useRef<HTMLElement>(null)
   const { ref, isVisible } = useScrollAnimation()
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"])
 
   const stats = [
     {
@@ -41,7 +50,25 @@ export default function Trust() {
   }
 
   return (
-    <section ref={ref} className="relative w-full px-4 py-20 md:px-8 md:py-32">
+    <section ref={containerRef} className="relative w-full px-4 py-20 md:px-8 md:py-32">
+      <div ref={ref}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'MedicalClinic',
+            '@id': 'https://dentealtius.it',
+            name: 'Dente Altius',
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '4.9',
+              reviewCount: '250',
+            },
+          }),
+        }}
+      />
+      </div>
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-2 items-center">
           {/* Left - Image */}
@@ -51,12 +78,14 @@ export default function Trust() {
             transition={{ duration: 0.6 }}
             className="relative h-96 md:h-[500px] w-full rounded-2xl overflow-hidden glass"
           >
-            <Image
-              src="/clinic-team.jpg"
-              alt="Team professionista Dente Altius"
-              fill
-              className="object-cover"
-            />
+            <motion.div style={{ y }} className="absolute -inset-10 w-[calc(100%+80px)] h-[calc(100%+80px)]">
+              <Image
+                src="/clinic-team.jpg"
+                alt="Team di dentisti professionisti nello studio Dente Altius a Milano"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
           </motion.div>
 
           {/* Right - Stats */}
